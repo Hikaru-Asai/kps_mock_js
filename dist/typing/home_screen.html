@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles.css">
+  <title>ホーム画面 | タイピング画面</title>
+</head>
+<body>
+  <header class="l-header">
+    <div class="l-header__container">
+      <a class="l-header__container__logo">
+        <img src="http://placehold.jp/32x32.png" alt="LOGO" class="w-10 h-10 rounded-full">
+        <span class="ml-3 text-xl">Logo</span>
+      </a>
+      <nav class="l-header__container__nav">
+        <a href="#" class="l-header__container__nav__user">
+          <img src="http://placehold.jp/32x32.png" alt="PROFILE" class="w-8 h-8 rounded-full">
+          <span class="ml-2 text-sm">User</span>
+        </a>
+        <a href="#" class="c-button--icon">ログアウト
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+  <section class="l-main">
+    <div class="l-main__container">
+      <div class="l-main__container__heading">
+        <p class="l-main__container__heading__strap">NEW</p>
+        <h2>今月のタイピング</h2>
+      </div>
+      <div class="c-table">
+        <div class="c-table__container">
+          <div class="c-table__container__space">
+            <div class="c-table__container__space__shadow">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">コース名</th>
+                    <th scope="col">音声</th>
+                    <th scope="col">アルファベット</th>
+                    <th scope="col">最高点</th>
+                    <th scope="col">日付</th>
+                    <th scope="col" class="relative px-6 py-3">
+                      <span class="sr-only">スタート</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>123</td>
+                    <td>ハロウィン</td>
+                    <td>あり</td>
+                    <td>あり</td>
+                    <td>200</td>
+                    <td>2021/12/10</td>
+                    <td class="text-right text-sm font-medium">
+                      <a href="./typing_screen.html" class="c-button--sm">スタート</a>
+                    </td>
+                  </tr>
+                  <!-- More ... -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="l-main">
+    <div class="l-main__container pb-24">
+      <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+        <div class="relative flex-grow w-full">
+          <input placeholder="コース名検索" type="text" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <button class="c-button hidden sm:block">リセット</button>
+      </div>
+      <div class="flex justify-center rounded-md mt-4" role="group">
+        <button type="button" class="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+          レベル1
+        </button>
+        <button type="button" class="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+          レベル2
+        </button>
+        <button type="button" class="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+          レベル3
+        </button>
+      </div>
+      <div class="c-table mt-4">
+        <div class="c-table__container">
+          <div class="c-table__container__space">
+            <div class="c-table__container__space__shadow">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">コース名</th>
+                    <th scope="col">音声</th>
+                    <th scope="col">アルファベット</th>
+                    <th scope="col">最高点</th>
+                    <th scope="col">日付</th>
+                    <th scope="col" class="relative px-6 py-3">
+                      <span class="sr-only">スタート</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                  <tr>
+                    <td>123</td>
+                    <td>ハロウィン</td>
+                    <td>あり</td>
+                    <td>あり</td>
+                    <td>200</td>
+                    <td>2021/12/10</td>
+                    <td class="text-right">
+                      <a href="./typing_screen.html" class="c-button--sm">スタート</a>
+                    </td>
+                  </tr>
+                  <!-- More ... -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
