@@ -176,6 +176,12 @@ function nextKeywordFunc() {
     for (val of untypedTwoArr) {
       untypedField.textContent += val[0];
     }
+    // キーボード色変更
+    if (oneKeyword !== '') {
+      document.getElementById(keyboardMap[oneKeyword]).classList.remove('p-keyboard__active');
+    }
+    oneKeyword = untypedTwoArr[0][0].substring(0, 1);
+    document.getElementById(keyboardMap[oneKeyword]).classList.add('p-keyboard__active');
   } else {
     untypedField.textContent = keywords[idx].romaji;
   }
@@ -212,6 +218,12 @@ document.addEventListener('keydown', (e) => {
     }
     if (untypedTwoArr[untypedCnt][passIndex].length == 0) {
       untypedCnt += 1;
+    }
+    if (untypedField.textContent !== '') {
+      // キーボード色変更
+      document.getElementById(keyboardMap[oneKeyword]).classList.remove('p-keyboard__active');
+      oneKeyword = untypedField.textContent.substring(0, 1);
+      document.getElementById(keyboardMap[oneKeyword]).classList.add('p-keyboard__active');
     }
   } else {
     // ミスタイプ

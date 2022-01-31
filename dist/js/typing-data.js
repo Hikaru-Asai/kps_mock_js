@@ -3,10 +3,10 @@
  * @type {array} keywords キーワード
  */
 const keywords = [
-  {id: 1, mana: 'ちゃ', kana: 'ちゃ', romaji: ''},
-  // {id: 0, mana: 'とっきゅう', kana: 'とっきゅう', romaji: ''},
-  // {id: 1, mana: 'ぷっちょ', kana: 'ぷっちょ', romaji: ''},
-  // {id: 1, mana: '魔術師手術中', kana: 'まじゅつししゅじゅつちゅう', romaji: ''},
+  // {id: 1, mana: 'ちゃ', kana: 'ちゃ', romaji: ''},
+  {id: 0, mana: 'とっきゅう', kana: 'とっきゅう', romaji: ''},
+  {id: 1, mana: 'ぷっちょ', kana: 'ぷっちょ', romaji: ''},
+  {id: 1, mana: '魔術師手術中', kana: 'まじゅつししゅじゅつちゅう', romaji: ''},
   // {id: 1, mana: '平和の象徴', kana: 'へいわのしょうちょう', romaji: ''},
   // {id: 2, mana: 'チョコレート', kana: 'ちょこれーと', romaji: ''},
   // {id: 2, mana: '目玉焼き', kana: 'めだまやき', romaji: ''},
@@ -74,3 +74,9 @@ let untypedCnt = 0;
  * @type {int} missType ミスタイプ数
  */
 let missType = 0;
+
+/**
+ * @type {string} oneKeyword キーボードの色変更用
+ * @example oneKeyword = 'a';
+ */
+let oneKeyword = '';
