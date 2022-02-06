@@ -1,5 +1,5 @@
 /**
- * タイピング画面をモーダル表示・非表示
+ * タイピング結果をモーダル表示・非表示
  * @param {string} modalID 表示するid要素
  */
 function toggleModalFunc(modalID) {
@@ -12,10 +12,8 @@ function toggleModalFunc(modalID) {
 function startTypingFunc() {
   // スタートボタンを非表示
   document.getElementById('p-typingscreen__start').classList.toggle("hidden");
-
   // カウントを表示
   document.getElementById('p-typingscreen__count').classList.toggle("hidden");
-
   // カウントを開始
   const countSeconds = 3; // (3秒)
   for (let i = 0; i <= countSeconds; i++) {
@@ -40,10 +38,22 @@ function startTypingFunc() {
  */
 function initTypingFunc() {
   // 初期化
+  keydownAllCnt = 0;
+  successType = 0;
   missType = 0;
-  misstypeField.textContent = 'ミス: 0';
-  // 
+  successtypeField.textContent = '入力: ' + successType;
+  misstypeField.textContent = 'ミス: ' + missType;
+  // キーワードの並び替え
+  keywordOrder = [];
+  for (let i = 0; i < keywords.length; i++) { keywordOrder.push(i); }
+  for (let i = keywordOrder.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [keywordOrder[i], keywordOrder[j]] = [keywordOrder[j], keywordOrder[i]];
+  }
+  // 最初の単語を出題
   nextKeywordFunc();
+  // タイピングの制御フラグをtrueにする(キーボード入力の受付を開始する)
+  typingFlag = true
 }
 
 /**
@@ -64,14 +74,14 @@ function nextKeywordFunc() {
   untypedField.textContent = '';
   untypedCnt = 0;
 
-  const idx = Math.floor(Math.random() * Math.floor(keywords.length));
-  keyword = keywords[idx].kana;
-  kanaField.textContent = keywords[idx].kana;
-  manaField.textContent = keywords[idx].mana;
+  console.log(keywordOrder.length);
+  keyword = keywords[keywordOrder[0]].kana;
+  kanaField.textContent = keywords[keywordOrder[0]].kana;
+  manaField.textContent = keywords[keywordOrder[0]].mana;
   // ローマ字がない場合、仮名からローマ字に変換して表示
-  if(keywords[idx].romaji === '') {
+  if(keywords[keywordOrder[0]].romaji === '') {
     // 仮名を1文字ずつの配列に変換
-    keywordArr = [...keywords[idx].kana];
+    keywordArr = [...keywords[keywordOrder[0]].kana];
     // 小書き文字がある場合その前の文字と結合
     for (let i = 0; i < keywordArr.length; i++) {
       if (['っ'].indexOf(keywordArr[i]) > -1) {
@@ -100,7 +110,7 @@ function nextKeywordFunc() {
     let roman = [];
     // タイプされてないキーワード文字の2次元配列の作成
     untypedTwoArr = [];
-    keywordArr.forEach((val, idx) => {
+    keywordArr.forEach((val) => {
       // 変数初期化
       roman = [];
       if (val.length === 3) {
@@ -166,9 +176,6 @@ function nextKeywordFunc() {
       });
     });
 
-    console.log(keywordArr);
-    console.log(untypedTwoArr);
-
     // ローマ字を出力する
     for (val of typedTwoArr) {
       typedField.textContent += val[0];
@@ -176,63 +183,85 @@ function nextKeywordFunc() {
     for (val of untypedTwoArr) {
       untypedField.textContent += val[0];
     }
-    // キーボード色変更
+    // キーボードと指の色変更
     if (oneKeyword !== '') {
       document.getElementById(keyboardMap[oneKeyword]).classList.remove('p-keyboard__active');
+      document.getElementById(fingerMap[oneKeyword]).classList.remove('p-finger__active');
     }
     oneKeyword = untypedTwoArr[0][0].substring(0, 1);
     document.getElementById(keyboardMap[oneKeyword]).classList.add('p-keyboard__active');
+    document.getElementById(fingerMap[oneKeyword]).classList.add('p-finger__active');
+    // 指色変更
   } else {
     untypedField.textContent = keywords[idx].romaji;
   }
+  // 配列を1つ進める
+  keywordOrder.shift();
 }
 
 /*
  * キーボード入力による処理
  */
-document.addEventListener('keydown', (e) => {
-  // 入力したキーが配列の1文字目に一致する配列のみに書き換える
-  let arrSub = untypedTwoArr[untypedCnt].filter(element => element.substring(0, 1).toLowerCase() == e.key.toLowerCase());
-  if (arrSub.length > 0) {
-    untypedTwoArr[untypedCnt] = arrSub;
-  }
-  // 入力したキーが配列の1文字目に一致する配列の番号を保持
-  let passIndex = untypedTwoArr[untypedCnt].findIndex(element => element.substring(0, 1).toLowerCase() == e.key.toLowerCase());
-  // 入力したキーが配列の1文字目に一致する場合、削除する
-  untypedTwoArr[untypedCnt].forEach((val, index) => {
-    if (e.key.toLowerCase() === untypedTwoArr[untypedCnt][index].substring(0, 1).toLowerCase()) {
-      typedTwoArr[untypedCnt][index] += untypedTwoArr[untypedCnt][index].substring(0, 1);
-      untypedTwoArr[untypedCnt][index] = untypedTwoArr[untypedCnt][index].slice(1);
+window.addEventListener('keydown', (e) => {
+  if (typingFlag) {
+    // 入力した数(結果を表示する時に使用)
+    keydownAllCnt += 1;
+    // 入力したキーが配列の1文字目に一致する配列のみに書き換える
+    let arrSub = untypedTwoArr[untypedCnt].filter(element => element.substring(0, 1).toLowerCase() == e.key.toLowerCase());
+    if (arrSub.length > 0) {
+      untypedTwoArr[untypedCnt] = arrSub;
     }
-  });
-  // 入力したキーが配列の1文字目に一致する場合、画面を更新する
-  if (passIndex > -1) {
-    // 初期化
-    typedField.textContent = '';
-    untypedField.textContent = '';
-    for (val of typedTwoArr) {
-      typedField.textContent += val[passIndex];
+    // 入力したキーが配列の1文字目に一致する配列の番号を保持
+    let passIndex = untypedTwoArr[untypedCnt].findIndex(element => element.substring(0, 1).toLowerCase() == e.key.toLowerCase());
+    // 入力したキーが配列の1文字目に一致する場合、削除する
+    untypedTwoArr[untypedCnt].forEach((val, index) => {
+      if (e.key.toLowerCase() === untypedTwoArr[untypedCnt][index].substring(0, 1).toLowerCase()) {
+        typedTwoArr[untypedCnt][index] += untypedTwoArr[untypedCnt][index].substring(0, 1);
+        untypedTwoArr[untypedCnt][index] = untypedTwoArr[untypedCnt][index].slice(1);
+      }
+    });
+    // 入力したキーが配列の1文字目に一致する場合、画面を更新する
+    if (passIndex > -1) {
+      // 初期化
+      typedField.textContent = '';
+      untypedField.textContent = '';
+      for (val of typedTwoArr) {
+        typedField.textContent += val[passIndex];
+      }
+      for (val of untypedTwoArr) {
+        untypedField.textContent += val[passIndex];
+      }
+      if (untypedTwoArr[untypedCnt][passIndex].length == 0) {
+        untypedCnt += 1;
+      }
+      // キーボードと指の色変更
+      if (untypedField.textContent !== '') { 
+        document.getElementById(keyboardMap[oneKeyword]).classList.remove('p-keyboard__active'); // 前のキーボード色削除
+        document.getElementById(fingerMap[oneKeyword]).classList.remove('p-finger__active');  // 前の指色削除
+        oneKeyword = untypedField.textContent.substring(0, 1);
+        document.getElementById(keyboardMap[oneKeyword]).classList.add('p-keyboard__active'); // キーボード色追加
+        document.getElementById(fingerMap[oneKeyword]).classList.add('p-finger__active'); // 指色追加
+      }
+      // 成功タイプ
+      successType += 1;
+      successtypeField.textContent = '入力: ' + successType;
+    } else {
+      // ミスタイプ
+      missType += 1;
+      misstypeField.textContent = 'ミス: ' + missType;
     }
-    for (val of untypedTwoArr) {
-      untypedField.textContent += val[passIndex];
-    }
-    if (untypedTwoArr[untypedCnt][passIndex].length == 0) {
-      untypedCnt += 1;
-    }
-    if (untypedField.textContent !== '') {
-      // キーボード色変更
-      document.getElementById(keyboardMap[oneKeyword]).classList.remove('p-keyboard__active');
-      oneKeyword = untypedField.textContent.substring(0, 1);
-      document.getElementById(keyboardMap[oneKeyword]).classList.add('p-keyboard__active');
-    }
-  } else {
-    // ミスタイプ
-    missType += 1;
-    misstypeField.textContent = 'ミス: ' + missType;
-  }
 
-  // キーワードの入力が全て完了したら、次のキーワードへ
-  if (untypedField.textContent === '') {
-    nextKeywordFunc();
+    // キーワードの入力が全て完了したら、次のキーワードへ(次のキーワードがある場合)
+    if (untypedField.textContent === '') {
+      if (keywordOrder.length !== 0) {
+        nextKeywordFunc();
+      } else {
+        typingFlag = false
+        document.getElementById('p-typingresult--all').textContent = keydownAllCnt;
+        document.getElementById('p-typingresult--miss').textContent = missType;
+        toggleModalFunc('p-typingresult');
+        console.log("Finish!");
+      }
+    }
   }
 });

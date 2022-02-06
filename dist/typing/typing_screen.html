@@ -27,116 +27,9 @@
     </div>
   </header>
   <section class="l-main">
-    <div class="l-main__container">
-      <div class="flex items-center justify-center p-12 rounded bg-gray-500">
-        <button class="c-button" type="button" onclick="toggleModalFunc('modal-typing')">はじめる</button>
-        <div class="hidden fixed inset-0 flex justify-center items-center" id="modal-typing">
-          <div class="bg-black opacity-50 w-full h-full fixed inset-0 z-40"></div>
-          <div class="px-4 py-2 md:px-12 md:py-6 bg-white z-50 rounded w-11/12 sm:w-4/5">
-            <div class="">
-              <!-- タイピングヘッダー-->
-              <button class="c-button--sm" type="button" onclick="toggleModalFunc('modal-typing')">やめる</button>
-            </div>
-            <div class="mt-4">
-              <div class="p-typingscreen" id="p-typingscreen__startscreen">
-                <button class="p-typingscreen__start c-button--sm" type="button" onclick="startTypingFunc()" id="p-typingscreen__start">はじめる</button>
-                <div class="p-typingscreen__count hidden" id="p-typingscreen__count"></div>
-                <div class="p-typingscreen__kana">&nbsp;</div>
-                <div class="p-typingscreen__mana">&nbsp;</div>
-                <div class="p-typingscreen__romaji">
-                  <div class="p-typingscreen__romaji__typed"></div>
-                  <div class="p-typingscreen__romaji__untyped">&nbsp;</div>
-                </div>
-              </div>
-              <div class="p-typingscreen hidden" id="p-typingscreen">
-                <div class="p-typingscreen__kana" id="p-kana"></div><!-- お題(仮名) -->
-                <div class="p-typingscreen__mana" id="p-mana"></div><!-- お題(真名) -->
-                <div class="p-typingscreen__romaji">
-                  <div class="p-typingscreen__romaji__typed" id="p-typed"></div>
-                  <div class="p-typingscreen__romaji__untyped" id="p-untyped"></div>
-                </div><!-- お題(ローマ字) -->
-                <div class="p-typingscreen__misstype" id="p-misstype"></div><!-- ミスタイプ数 -->
-              </div>
-              <div class="p-keyboard"><!-- タイピングキーボード -->
-                <!-- 1段目 -->
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--zh"><!-- 半角/全角 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--one"><!-- 1 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--two"><!-- 2 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--three"><!-- 3 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--four"><!-- 4 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--five"><!-- 5 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--six"><!-- 6 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--seven"><!-- 7 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--eight"><!-- 8 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--nine"><!-- 9 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--zero"><!-- 0 --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--hypen"><!-- - --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--tilde"><!-- ^ --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--en"><!-- ¥ --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--del"><!-- del --></div>
-                <!-- 2段目 -->
-                <div class="p-keyboard__key--md" id="p-keyboard__key--tab"><!-- tab --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--q"><!-- q --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--w"><!-- w --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--e"><!-- e --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--r"><!-- r --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--t"><!-- t --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--y"><!-- y --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--u"><!-- u --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--i"><!-- i --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--o"><!-- o --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--p"><!-- p --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--atmark"><!-- @ --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--lbracket"><!-- [ --></div>
-                <div class="p-keyboard__key--enter" id="p-keyboard__key--enter"><!-- enter --></div>
-                <!-- 3段目 -->
-                <div class="p-keyboard__key--lg" id="p-keyboard__key--control"><!-- control --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--a"><!-- a --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--s"><!-- s --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--d"><!-- d --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--f"><!-- f --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--g"><!-- g --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--h"><!-- h --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--j"><!-- j --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--k"><!-- k --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--l"><!-- l --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--semicolon"><!-- ; --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--colon"><!-- : --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--rbracket"><!-- ] --></div>
-                <div class="p-keyboard__margin--md"></div>
-                <!-- 4段目 -->
-                <div class="p-keyboard__key--xl" id="p-keyboard__key--lshift"><!-- lshift --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--z"><!-- z --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--x"><!-- x --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--c"><!-- c --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--v"><!-- v --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--b"><!-- b --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--n"><!-- n --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--m"><!-- m --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--comma"><!-- , --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--period"><!-- . --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--slash"><!-- / --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--underscore"><!-- _ --></div>
-                <div class="p-keyboard__key--lg" id="p-keyboard__key--rshift"><!-- rshift --></div>
-                <!-- 5段目 -->
-                <div class="p-keyboard__margin--lg"></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--loption"><!-- loption --></div>
-                <div class="p-keyboard__key--md" id="p-keyboard__key--lcommnad"><!-- lcommnad --></div>
-                <div class="p-keyboard__key--max" id="p-keyboard__key--space"><!-- space --></div>
-                <div class="p-keyboard__key--md" id="p-keyboard__key--rcommnad"><!-- rcommnad --></div>
-                <div class="p-keyboard__key--normal" id="p-keyboard__key--roption"><!-- roption --></div>
-                <div class="p-keyboard__margin--lg"></div>
-              </div>
-              <div class="mt-4 flex justify-center"><!-- 手 -->
-                <div class="mr-2 bg-gray-100 w-8 h-8 rounded-full" id=""></div>
-                <div class="mr-2 bg-gray-100 w-8 h-8 rounded-full" id=""></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex gap-8 mt-12">
-        <div class="c-table w-1/2">
+    <div class="l-main__container flex flex-wrap justify-center gap-2">
+      <div class="flex gap-2 mt-12 md:mt-0 w-full md:w-2/5 order-1 md:order-0">
+        <div class="c-table w-3/4">
           <div class="c-table__container">
             <div class="c-table__container__space">
               <div class="c-table__container__space__shadow">
@@ -160,22 +53,18 @@
             </div>
           </div>
         </div>
-        <div class="c-table w-1/2">
+        <div class="c-table w-1/4">
           <div class="c-table__container">
             <div class="c-table__container__space">
               <div class="c-table__container__space__shadow">
                 <table>
                   <thead>
                     <tr>
-                      <th scope="col">ランキング</th>
-                      <th scope="col">なまえ</th>
-                      <th scope="col">スコア</th>
+                      <th scope="col">今日のスコア</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>1</td>
-                      <td>田中太郎</td>
                       <td>200</td>
                     </tr>
                   </tbody>
@@ -185,12 +74,136 @@
           </div>
         </div>
       </div>
+      <div class="flex-1 order-0 md:order-1">
+          <div class="p-typingscreen" id="p-typingscreen__startscreen">
+            <button class="p-typingscreen__start c-button--sm" type="button" onclick="startTypingFunc()" id="p-typingscreen__start">はじめる</button>
+            <div class="p-typingscreen__count hidden" id="p-typingscreen__count"></div>
+            <div class="p-typingscreen__kana">&nbsp;</div>
+            <div class="p-typingscreen__mana">&nbsp;</div>
+            <div class="p-typingscreen__romaji">
+              <div class="p-typingscreen__romaji__typed"></div>
+              <div class="p-typingscreen__romaji__untyped">&nbsp;</div>
+            </div>
+          </div>
+          <div class="p-typingscreen hidden" id="p-typingscreen">
+            <div class="p-typingscreen__kana" id="p-kana"></div><!-- お題(仮名) -->
+            <div class="p-typingscreen__mana" id="p-mana"></div><!-- お題(真名) -->
+            <div class="p-typingscreen__romaji">
+              <div class="p-typingscreen__romaji__typed" id="p-typed"></div>
+              <div class="p-typingscreen__romaji__untyped" id="p-untyped"></div>
+            </div><!-- お題(ローマ字) -->
+            <div class="p-typingscreen__successtype" id="p-successtype"></div><!-- 成功タイプ数 -->
+            <div class="p-typingscreen__misstype" id="p-misstype"></div><!-- ミスタイプ数 -->
+          </div>
+          <div class="p-typingresult hidden" id="p-typingresult"><!-- 結果表示画面 -->
+            <div class="p-typingresult__bg"></div>
+            <div class="p-typingresult__card">
+              <h3>結果</h3>
+              <ul>
+                <li><span>スコア</span><div id="p-typingresult--score"></div><span>点</span></li>
+                <li><span>時間</span><div id="p-typingresult--time"></div><span>秒</span></li>
+                <li><span>打った数</span><div id="p-typingresult--all"></div><span>回</span></li>
+                <li><span>間違った数</span><div id="p-typingresult--miss"></div><span>回</span></li>
+              </ul>
+              <button class="c-button--sm" type="button" onclick="toggleModalFunc('p-typingresult')">とじる</button>
+            </div>
+          </div>
+          <div class="p-keyboard"><!-- タイピングキーボード -->
+            <!-- 1段目 -->
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--zh"><!-- 半角/全角 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--one"><!-- 1 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--two"><!-- 2 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--three"><!-- 3 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--four"><!-- 4 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--five"><!-- 5 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--six"><!-- 6 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--seven"><!-- 7 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--eight"><!-- 8 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--nine"><!-- 9 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--zero"><!-- 0 --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--hypen"><!-- - --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--tilde"><!-- ^ --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--en"><!-- ¥ --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--del"><!-- del --></div>
+            <!-- 2段目 -->
+            <div class="p-keyboard__key--md" id="p-keyboard__key--tab"><!-- tab --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--q"><!-- q --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--w"><!-- w --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--e"><!-- e --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--r"><!-- r --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--t"><!-- t --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--y"><!-- y --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--u"><!-- u --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--i"><!-- i --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--o"><!-- o --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--p"><!-- p --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--atmark"><!-- @ --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--lbracket"><!-- [ --></div>
+            <div class="p-keyboard__key--enter" id="p-keyboard__key--enter"><!-- enter --></div>
+            <!-- 3段目 -->
+            <div class="p-keyboard__key--lg" id="p-keyboard__key--control"><!-- control --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--a"><!-- a --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--s"><!-- s --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--d"><!-- d --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--f"><!-- f --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--g"><!-- g --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--h"><!-- h --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--j"><!-- j --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--k"><!-- k --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--l"><!-- l --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--semicolon"><!-- ; --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--colon"><!-- : --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--rbracket"><!-- ] --></div>
+            <div class="p-keyboard__margin--md"></div>
+            <!-- 4段目 -->
+            <div class="p-keyboard__key--xl" id="p-keyboard__key--lshift"><!-- lshift --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--z"><!-- z --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--x"><!-- x --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--c"><!-- c --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--v"><!-- v --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--b"><!-- b --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--n"><!-- n --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--m"><!-- m --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--comma"><!-- , --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--period"><!-- . --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--slash"><!-- / --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--underscore"><!-- _ --></div>
+            <div class="p-keyboard__key--lg" id="p-keyboard__key--rshift"><!-- rshift --></div>
+            <!-- 5段目 -->
+            <div class="p-keyboard__margin--lg"></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--loption"><!-- loption --></div>
+            <div class="p-keyboard__key--md" id="p-keyboard__key--lcommnad"><!-- lcommnad --></div>
+            <div class="p-keyboard__key--max" id="p-keyboard__key--space"><!-- space --></div>
+            <div class="p-keyboard__key--md" id="p-keyboard__key--rcommnad"><!-- rcommnad --></div>
+            <div class="p-keyboard__key--normal" id="p-keyboard__key--roption"><!-- roption --></div>
+            <div class="p-keyboard__margin--lg"></div>
+          </div>
+          <div class="p-hands mt-4"><!-- 手 -->
+            <!-- 左手 -->
+            <div class="p-fingers">
+              <div class="p-fingers__finger--md" id="p-fingers__finger--llittle"></div><!-- 小指 -->
+              <div class="p-fingers__finger--lg" id="p-fingers__finger--lthird"></div><!-- 薬指 -->
+              <div class="p-fingers__finger--xl" id="p-fingers__finger--lsecond"></div><!-- 中指 -->
+              <div class="p-fingers__finger--lg" id="p-fingers__finger--lfirst"></div><!-- 人差し指 -->
+              <div class="p-fingers__finger--sm ml-2" id="p-fingers__finger--lthumb"></div><!-- 親指 -->
+            </div>
+            <!-- 右手 -->
+            <div class="p-fingers">
+              <div class="p-fingers__finger--sm mr-2" id="p-fingers__finger--rthumb"></div><!-- 親指 -->
+              <div class="p-fingers__finger--lg" id="p-fingers__finger--rfirst"></div><!-- 人差し指 -->
+              <div class="p-fingers__finger--xl" id="p-fingers__finger--rsecond"></div><!-- 中指 -->
+              <div class="p-fingers__finger--lg" id="p-fingers__finger--rthird"></div><!-- 薬指 -->
+              <div class="p-fingers__finger--md" id="p-fingers__finger--rlittle"></div><!-- 小指 -->
+            </div>
+          </div>
+      </div>
     </div>
   </section>
 
   <script src="../js/typing-data.js"></script>
   <script src="../js/typing.js"></script>
   <script src="../js/keyboard.js"></script>
+  <script src="../js/finger.js"></script>
   <script src="../js/romanizer.js"></script>
 </body>
 </html>

@@ -481,6 +481,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 50;
 }
 
+.order-1 {
+  order: 1;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -562,12 +566,28 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 50%;
 }
 
+.w-3\/4 {
+  width: 75%;
+}
+
+.w-1\/4 {
+  width: 25%;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-end {
@@ -584,6 +604,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -925,7 +949,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: auto;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  padding-top: 6rem;
+  padding-top: 4rem;
 }
 
 .l-main__container__heading {
@@ -1114,10 +1138,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .c-table th {
   white-space: nowrap;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   text-align: left;
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1130,10 +1154,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .c-table td {
   white-space: nowrap;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
@@ -1262,6 +1286,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.p-typingscreen__successtype {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  padding: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .p-typingscreen__misstype {
   position: absolute;
   top: 0.25rem;
@@ -1377,7 +1413,216 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-keyboard__active, .p-keyboard__active::after {
   --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
+/*
+ * p-fingers
+ */
+
+.p-hands {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.p-fingers {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .p-fingers {
+    gap: 0.5rem;
+  }
+}
+
+.p-fingers__finger--sm {
+  /* 親指 */
+  height: 1.25rem;
+  width: 1rem;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 640px) {
+  .p-fingers__finger--sm {
+    height: 2.5rem;
+  }
+
+  .p-fingers__finger--sm {
+    width: 2rem;
+  }
+}
+
+.p-fingers__finger--md {
+  /* 小指 */
+  height: 1.5rem;
+  width: 1rem;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 640px) {
+  .p-fingers__finger--md {
+    height: 3rem;
+  }
+
+  .p-fingers__finger--md {
+    width: 2rem;
+  }
+}
+
+.p-fingers__finger--lg {
+  /* 人差し指, 薬指 */
+  height: 2rem;
+  width: 1rem;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 640px) {
+  .p-fingers__finger--lg {
+    height: 4rem;
+  }
+
+  .p-fingers__finger--lg {
+    width: 2rem;
+  }
+}
+
+.p-fingers__finger--xl {
+  /* 中指 */
+  height: 2.5rem;
+  width: 1rem;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 640px) {
+  .p-fingers__finger--xl {
+    height: 5rem;
+  }
+
+  .p-fingers__finger--xl {
+    width: 2rem;
+  }
+}
+
+.p-finger__active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
+/*
+ * p-typingresult
+ */
+
+.p-typingresult {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 40;
+}
+
+.p-typingresult__bg {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  opacity: 0.5;
+}
+
+.p-typingresult__card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 50;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 91.666667%;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .p-typingresult__card {
+    width: 40%;
+  }
+}
+
+@media (min-width: 768px) {
+  .p-typingresult__card {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .p-typingresult__card {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+.p-typingresult__card {
+  transform: translate(-50%, -50%);
+}
+
+.p-typingresult__card h3 {
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.p-typingresult__card ul {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.p-typingresult__card li {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  border-bottom-width: 2px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.p-typingresult__card li span {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .hover\:bg-gray-100:hover {
@@ -1493,6 +1738,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 768px) {
+  .md\:order-1 {
+    order: 1;
+  }
+
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\:w-2\/5 {
+    width: 40%;
+  }
+
   .md\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
